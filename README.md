@@ -54,8 +54,4 @@ python main,py
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
-These changes modularize your application by:
-1. Moving database operations to a dedicated  class
-2. Creating a `Product` data model
-3. Separating UI components into reusable classes
-4. Improving the organization of the codebase with clear responsibilities for each module
+>_**This project was developed with 💓 by Javier Pérez**_

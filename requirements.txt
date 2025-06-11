@@ -1,0 +1,3 @@
+tkinter
+sqlite3
+# Note: tkinter and sqlite3 are part of the Python standard library, so they do not need to be installed separately.
