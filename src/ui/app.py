@@ -22,17 +22,17 @@ class InventoryApp:
         AppStyles.setup()
 
         # Initialize database manager with a relative path. Adjust if your structure differs.
-        self.db_path: str = os.path.join('src', 'db', 'inventory.db')
+        self.db_path: str = os.path.join("src", "db", "inventory.db")
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self.db_manager: DatabaseManager = DatabaseManager(self.db_path)
 
         # Create main window
         self.app: ctk.CTk = ctk.CTk()
         self.app.title("Inventory System")
-        
+
         # Set window size; adjust or allow resizing if needed
-        self.app.geometry("600x700")
-        self.app.resizable(False, False)
+        self.app.geometry("650x750")
+        self.app.resizable(True, True)
 
         # Keep reference to current frame
         self.current_frame: Any = None
@@ -45,7 +45,7 @@ class InventoryApp:
         Clear current widgets and display the login frame.
         """
         self._clear_app()
-        
+
         # LoginFrame(master, on_success_callback)
         self.current_frame = LoginFrame(self.app, self._on_login_success)
 
@@ -55,13 +55,10 @@ class InventoryApp:
         param employee: Employee object after successful login
         """
         self._clear_app()
-        
+
         # Create InventoryFrame and pack it
         self.current_frame = InventoryFrame(
-            self.app,
-            self.db_manager,
-            employee,
-            self.show_login  # callback for logout
+            self.app, self.db_manager, employee, self.show_login  # callback for logout
         )
         self.current_frame.pack(padx=20, pady=20, fill="both", expand=True)
 
