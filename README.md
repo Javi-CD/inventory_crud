@@ -14,29 +14,46 @@ A simple inventory management system built with Python and Tkinter.
 
 ```yaml
 inventory_crud/
+├──proyect.toml      # Proyect Dependenies
 ├── LICENSE          # MIT License file
 ├── README.md        # Project documentation
 ├── main.py          # Application entry point
 ├── requirements.txt # Project dependencies
+├── assets/          # Assets Files
 ├── doc/             # Documentation folder
+├── tests/           # Test directory
+│   ├── core/        # Core functionality tests
+│   │   └── database_test.py  # Database operations tests
+│   │   └── __init__.py
+│   └── ui/          # UI component tests
+│   │    └── components_test.py # UI components tests
+│   │    └── __init__.py
+│   │
+│   └── conftest.py
+│   └── __init__.py
 └── src/
-    ├── models/     # Models files
-    │   └── products.py # Product model
+    ├── models/      # Models files
+    │   └── models.py # Product model
+    │   └── __init__.py  
     │
     ├── core/        # Core business logic
     │   └── database.py  # Database operations
+    │   └── __init__.py  
     │
     ├── db/          # Database files
     │   ├── __init__.py
     │   └── inventory.db # SQLite database
     │
-    └── ui/
-    
-        │     # User interface
-        ├─      
+    └── ui/          # User interface
+        ├── components/  # UI building blocks
+        │   └── components.py # Reusable UI components 
+        │   └── inventory.db
+        │   └── loggin.py
+        │   └── __init__.py
+        │
         ├── __init__.py
         ├── app.py       # Main application class
-        └── styles.py    
+        └── styles.py    # UI styling definitions  
 ```
 
 ## How to Run
@@ -59,7 +76,17 @@ pip install poetry
 pip install poetry
 
 # Execute program
-python main,py
+python main.py
+```
+## Running Tests
+
+```python
+# Run all tests
+python -m unittest discover tests
+
+# Run specific test module
+python -m tests.core.database_test
+python -m tests.ui.components_test
 ```
 
 ## License
