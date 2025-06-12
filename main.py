@@ -1,8 +1,5 @@
-from tkinter import Tk
-from src.ui.app import App
+from src.ui.app import InventoryApp
 
-if __name__ == "__main__":
-    root = Tk()
-    app = App(root)
-    root.mainloop()
-    
+if __name__ == '__main__':
+    app = InventoryApp()
+    app.run()

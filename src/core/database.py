@@ -6,7 +6,18 @@ class DatabaseManager:
     
     def __init__(self, db_path: str):
         self.db_path = db_path
-        
+        self._create_tables()
+    
+    def _create_tables(self):
+        """Create database tables if they don't exist."""
+        self.execute_query('''
+        CREATE TABLE IF NOT EXISTS products (
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+            name TEXT NOT NULL,
+            price REAL NOT NULL
+        )
+        ''')
+    
     def execute_query(self, query: str, parameters: tuple = ()) -> sqlite3.Cursor:
         """Execute a database query and return the cursor.
         
@@ -43,23 +54,36 @@ class DatabaseManager:
         query = 'INSERT INTO products VALUES(NULL, ?, ?)'
         self.execute_query(query, (name, price))
         
-    def delete_product(self, name: str) -> None:
+    def delete_product(self, product_id: int) -> None:
         """Delete a product from the database.
         
         Args:
-            name: Name of the product to delete
+            product_id: ID of the product to delete
         """
-        query = 'DELETE FROM products WHERE name = ?'
-        self.execute_query(query, (name,))
+        query = 'DELETE FROM products WHERE id = ?'
+        self.execute_query(query, (product_id,))
         
-    def update_product(self, new_name: str, new_price: str, old_name: str, old_price: str) -> None:
+    def update_product(self, product_id: int, new_name: str, new_price: str) -> None:
         """Update product information.
         
         Args:
+            product_id: ID of the product to update
             new_name: New product name
             new_price: New product price
-            old_name: Original product name
-            old_price: Original product price
         """
-        query = 'UPDATE products SET name = ?, price = ? WHERE name = ? AND price = ?'
-        self.execute_query(query, (new_name, new_price, old_name, old_price))
+        query = 'UPDATE products SET name = ?, price = ? WHERE id = ?'
+        self.execute_query(query, (new_name, new_price, product_id))
+        
+    def get_product_by_id(self, product_id: int) -> Optional[Tuple]:
+        """Get a product by its ID.
+        
+        Args:
+            product_id: ID of the product to retrieve
+            
+        Returns:
+            Optional[Tuple]: Product tuple or None if not found
+        """
+        query = 'SELECT * FROM products WHERE id = ?'
+        cursor = self.execute_query(query, (product_id,))
+        result = cursor.fetchone()
+        return result
