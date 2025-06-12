@@ -37,11 +37,9 @@ class InventoryFrame(ctk.CTkFrame):
         self.on_logout: Callable[[], None] = on_logout
 
         # Create widgets: header, message label, tabs, logout button
-
         self._create_widgets()
 
         # Initial load of products and statistics
-
         self.read_products()
         self.update_summary_data()
 
@@ -50,20 +48,16 @@ class InventoryFrame(ctk.CTkFrame):
         Create header, message label, tabbed interface, and logout button.
         """
         # Header with employee info
-
         self._create_header()
 
         # Message label to show feedback (errors/success/info)
-
         self.result_label: MessageLabel = MessageLabel(self)
         self.result_label.pack(pady=5)
 
         # Tabbed interface for CRUD and Inventory view
-
         self._create_tabbed_interface()
 
         # Logout button
-
         logout_btn = StyledButton(
             self, text="Logout", command=self.on_logout, button_type="neutral"
         )
@@ -95,24 +89,20 @@ class InventoryFrame(ctk.CTkFrame):
         main_frame.pack(padx=20, pady=10, fill="both", expand=True)
 
         # Optional subtitle
-
         main_title = ctk.CTkLabel(
             main_frame, text="Inventory System", font=AppStyles.HEADER_FONT
         )
         main_title.pack(padx=15, pady=(0, 5))
 
         # Create the tab view
-
         self.tabview = ctk.CTkTabview(main_frame)
         self.tabview.pack(padx=10, pady=10, fill="both", expand=True)
 
         # Add two tabs
-
         self.tabview.add("Product Management")
         self.tabview.add("Inventory")
 
         # Build each tab's contents
-
         self._create_product_management_tab(self.tabview.tab("Product Management"))
         self._create_inventory_tab(self.tabview.tab("Inventory"))
 
@@ -131,64 +121,49 @@ class InventoryFrame(ctk.CTkFrame):
         :param parent_tab: the CTkFrame for this tab
         """
         # Contrainer Frame for the table: expand in all width
-
         table_container = ctk.CTkFrame(parent_tab)
         # Now we let it expand vertically and horizontally
-
         table_container.pack(padx=10, pady=10, fill="both", expand=True)
-
-        # Scrollable frame for ranks: occupies the entire remaining space in Table_Container
-        # We use grid instead of internal pack to configure pesos
 
         self.table_scrollable: ctk.CTkScrollableFrame = ctk.CTkScrollableFrame(
             table_container, fg_color="transparent"
         )
         # We pack with Fill and Expand to use the entire space
-
         self.table_scrollable.pack(fill="both", expand=True)
-
-        # Configure colonconfigure inside the scrollable:
-        # assuming that ctkscrollableframe places its widgets in an internal frame with Grid,
-        # We can force column 0 to stretch:
 
         try:
             # If ctkscrollableframe exposes a scrollable_frame attribute, use it:
-
             inner = getattr(self.table_scrollable, "scrollable_frame", None)
+
             if inner:
                 inner.columnconfigure(0, weight=1)
             else:
                 # Fallback: Set your own
-
                 self.table_scrollable.columnconfigure(0, weight=1)
+
         except Exception:
             pass
 
         # Create Header of the table
-
         self._create_table_header()
 
         # Frame for summary section (Statistics) under the table
-
         summary_frame = ctk.CTkFrame(parent_tab)
         summary_frame.pack(padx=10, pady=10, fill="both", expand=True)
 
         # Section title
-
         summary_title = ctk.CTkLabel(
             summary_frame, text="Inventory Summary", font=AppStyles.HEADER_FONT
         )
         summary_title.pack(pady=(5, 10))
 
         # Container Dividend statistics into two columns
-
         main_container = ctk.CTkFrame(summary_frame, fg_color="transparent")
         main_container.pack(fill="both", expand=True, padx=5, pady=5)
         main_container.columnconfigure(0, weight=1)
         main_container.columnconfigure(1, weight=1)
 
-        # LEFT COLUMN: KEY STATISTICS (as before) ...
-
+        # LEFT COLUMN: KEY STATISTICS
         stats_frame = ctk.CTkFrame(main_container)
         stats_frame.grid(row=0, column=0, padx=5, pady=5, sticky="nsew")
         stats_title = ctk.CTkLabel(
@@ -234,7 +209,6 @@ class InventoryFrame(ctk.CTkFrame):
         self.min_price_label.grid(row=4, column=1, sticky="w", padx=5, pady=2)
 
         # Right column: categories
-
         categories_container = ctk.CTkFrame(main_container)
         categories_container.grid(row=0, column=1, padx=5, pady=5, sticky="nsew")
 
@@ -268,23 +242,20 @@ class InventoryFrame(ctk.CTkFrame):
         Now with proper column weights and padding so se expanda horizontalmente.
         """
         # Clear any existing header widgets first
-
         for widget in self.table_scrollable.winfo_children():
             info = widget.grid_info()
             if info.get("row") == 0:
                 widget.destroy()
 
         # FRAME FOR THE HEADER
-
         header_frame = ctk.CTkFrame(
             self.table_scrollable, fg_color=AppStyles.PRIMARY_COLOR, corner_radius=5
         )
-        # We place in Grid Row 0, column 0, Sticky Ew to stretch
 
+        # We place in Grid Row 0, column 0, Sticky Ew to stretch
         header_frame.grid(row=0, column=0, sticky="ew", padx=2, pady=(2, 0))
 
         # We configure column 0 of the scrollable for the header to stretch:
-
         try:
             inner = getattr(self.table_scrollable, "scrollable_frame", None)
             if inner:
@@ -296,19 +267,17 @@ class InventoryFrame(ctk.CTkFrame):
 
         # Configure columns inside the header_frame
         # Small column ID, Name larger, small price
-
         header_frame.columnconfigure(0, weight=1)
         header_frame.columnconfigure(1, weight=4)
         header_frame.columnconfigure(2, weight=2)
 
         # ID header
-
         id_lbl = ctk.CTkLabel(
             header_frame, text="ID", font=AppStyles.NORMAL_FONT, text_color="#ffffff"
         )
         id_lbl.grid(row=0, column=0, sticky="ew", padx=8, pady=8)
-        # Name header
 
+        # Name header
         name_lbl = ctk.CTkLabel(
             header_frame,
             text="Product Name",
@@ -316,24 +285,24 @@ class InventoryFrame(ctk.CTkFrame):
             text_color="#ffffff",
         )
         name_lbl.grid(row=0, column=1, sticky="ew", padx=8, pady=8)
-        # Price header
 
+        # Price header
         price_lbl = ctk.CTkLabel(
             header_frame, text="Price", font=AppStyles.NORMAL_FONT, text_color="#ffffff"
         )
         price_lbl.grid(row=0, column=2, sticky="ew", padx=8, pady=8)
 
     def _create_form(self, parent: Any = None) -> None:
-        """
-        Create form entries for creating/updating/deleting a product.
-        :param parent: parent widget (tab frame). If None, uses self.
+        """Create form entries for creating/updating/deleting a product.
+
+        Args:
+            parent (Any, optional): Parent widget (tab frame). Defaults to None.
         """
         container = parent if parent else self
         form_frame = ctk.CTkFrame(container)
         form_frame.pack(pady=10, padx=20, fill="x")
 
         # ID field (for update/delete)
-
         id_label = ctk.CTkLabel(form_frame, text="Product ID (for update/delete)")
         id_label.pack(padx=20, pady=(10, 0), anchor="w")
         self.id_entry: ctk.CTkEntry = ctk.CTkEntry(
@@ -342,7 +311,6 @@ class InventoryFrame(ctk.CTkFrame):
         self.id_entry.pack(padx=20, pady=(0, 10), fill="x")
 
         # Name field
-
         name_label = ctk.CTkLabel(form_frame, text="Product Name")
         name_label.pack(padx=20, pady=(5, 0), anchor="w")
         self.name_entry: ctk.CTkEntry = ctk.CTkEntry(
@@ -351,7 +319,6 @@ class InventoryFrame(ctk.CTkFrame):
         self.name_entry.pack(padx=20, pady=(0, 10), fill="x")
 
         # Price field
-
         price_label = ctk.CTkLabel(form_frame, text="Price")
         price_label.pack(padx=20, pady=(5, 0), anchor="w")
         self.price_entry: ctk.CTkEntry = ctk.CTkEntry(
@@ -369,7 +336,6 @@ class InventoryFrame(ctk.CTkFrame):
         button_frame.pack(pady=15)
 
         # Create button
-
         create_btn = StyledButton(
             button_frame,
             text="Create",
@@ -380,7 +346,6 @@ class InventoryFrame(ctk.CTkFrame):
         create_btn.grid(row=0, column=0, padx=10, pady=5)
 
         # Refresh list button
-
         read_btn = StyledButton(
             button_frame,
             text="Refresh List",
@@ -394,7 +359,6 @@ class InventoryFrame(ctk.CTkFrame):
         read_btn.grid(row=0, column=1, padx=10, pady=5)
 
         # Update button
-
         update_btn = StyledButton(
             button_frame,
             text="Update",
@@ -405,7 +369,6 @@ class InventoryFrame(ctk.CTkFrame):
         update_btn.grid(row=1, column=0, padx=10, pady=5)
 
         # Delete button
-
         delete_btn = StyledButton(
             button_frame,
             text="Delete",
@@ -451,35 +414,39 @@ class InventoryFrame(ctk.CTkFrame):
         """
         try:
             products: List[Tuple[Any, ...]] = self.db_manager.get_all_products()
-            # Eliminar filas previas: widgets con grid row >= 1
+
+            # Remove previous rows: widgets with grid row> = 1
             for widget in self.table_scrollable.winfo_children():
                 info = widget.grid_info()
                 row = info.get("row")
+
                 if isinstance(row, int) and row >= 1:
                     widget.destroy()
 
-            # Poblar nuevas filas
+            # Populate new rows
             for idx, p in enumerate(products, start=1):
                 prod_id = p[0]
                 name = p[1]
+
                 try:
                     price_val = float(p[2])
                 except Exception:
                     price_val = 0.0
+
                 price_str = f"${price_val:,.2f}"
 
-                # Alternar color de fondo
+                # Alternate background color
                 row_bg = "#2b2b2b" if idx % 2 == 1 else "#242424"
 
                 row_frame = ctk.CTkFrame(
                     self.table_scrollable, fg_color=row_bg, corner_radius=0
                 )
-                # grid en row idx, column 0, sticky ew para expandir
+
                 row_frame.grid(row=idx, column=0, sticky="ew", padx=2, pady=0)
 
-                # Configurar columnas: mismo esquema que header
-                # Aseguramos que la columna 0 del scrollable tenga weight=1,
-                # y que cada row_frame expanda sus celdas:
+                # Configure columns: same scheme as header
+                # Ensure that column 0 of the scrollable has weight=1,
+                # and that each row_frame expands its cells:
                 row_frame.columnconfigure(0, weight=1)
                 row_frame.columnconfigure(1, weight=4)
                 row_frame.columnconfigure(2, weight=2)
@@ -489,12 +456,14 @@ class InventoryFrame(ctk.CTkFrame):
                     row_frame, text=str(prod_id), font=AppStyles.NORMAL_FONT, anchor="w"
                 )
                 id_lbl.grid(row=0, column=0, sticky="ew", padx=8, pady=6)
+
                 # Name label
                 name_lbl = ctk.CTkLabel(
                     row_frame, text=name, font=AppStyles.NORMAL_FONT, anchor="w"
                 )
                 name_lbl.grid(row=0, column=1, sticky="ew", padx=8, pady=6)
-                # Price label, alineado a la derecha
+
+                # Price label, aligned to the right
                 price_lbl = ctk.CTkLabel(
                     row_frame, text=price_str, font=AppStyles.NORMAL_FONT, anchor="e"
                 )
@@ -508,6 +477,7 @@ class InventoryFrame(ctk.CTkFrame):
         Update an existing product based on ID, then switch to Inventory tab and refresh.
         """
         id_text = self.id_entry.get().strip()
+
         try:
             product_id = int(id_text)
         except ValueError:
@@ -516,6 +486,7 @@ class InventoryFrame(ctk.CTkFrame):
 
         name = self.name_entry.get().strip()
         price = self.price_entry.get().strip()
+
         if not name or not price:
             self.result_label.show_error("Please complete all fields.")
             return
@@ -527,6 +498,7 @@ class InventoryFrame(ctk.CTkFrame):
             return
 
         existing = self.db_manager.get_product_by_id(product_id)
+
         if not existing:
             self.result_label.show_error(f"No product found with ID {product_id}.")
             return
@@ -548,6 +520,7 @@ class InventoryFrame(ctk.CTkFrame):
         Delete a product by ID, then switch to Inventory tab and refresh.
         """
         id_text = self.id_entry.get().strip()
+
         try:
             product_id = int(id_text)
         except ValueError:
@@ -686,10 +659,3 @@ class InventoryFrame(ctk.CTkFrame):
             self.result_label.show_info("Statistics updated.")
         except Exception as e:
             self.result_label.show_error(f"Error loading statistics: {e}")
-
-    def _on_table_row_click(self, event: tk.Event) -> None:
-        """
-        Optional: if you want to bind clicks on rows to fill the form.
-        Currently, rows are CTkFrames, so binding requires more work.
-        """
-        pass  # not implemented; for CTk-based rows, you could bind events on each label/frame
