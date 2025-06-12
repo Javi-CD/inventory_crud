@@ -1,0 +1,56 @@
+import customtkinter as ctk
+from src.ui.styles import AppStyles
+
+class MessageLabel(ctk.CTkLabel):
+    """Label for showing status messages."""
+    
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        self.configure(text="", text_color="gray")
+    
+    def show_success(self, message):
+        """Display a success message."""
+        self.configure(text=message, text_color="#4BB543")
+    
+    def show_error(self, message):
+        """Display an error message."""
+        self.configure(text=message, text_color="#FF3333")
+    
+    def show_info(self, message):
+        """Display an informational message."""
+        self.configure(text=message, text_color="gray")
+    
+    def clear(self):
+        """Clear the message."""
+        self.configure(text="")
+
+
+class FormField:
+    """Utility class to create standardized form fields."""
+    
+    @staticmethod
+    def create_field(parent, label_text, placeholder="", **kwargs):
+        """Create a labeled form field."""
+        container = ctk.CTkFrame(parent)
+        container.pack(fill="x", padx=20, pady=5)
+        
+        label = ctk.CTkLabel(container, text=label_text, anchor="w")
+        label.pack(fill="x")
+        
+        entry = ctk.CTkEntry(container, placeholder_text=placeholder, **kwargs)
+        entry.pack(fill="x", pady=(0, 5))
+        
+        return entry
+
+
+class StyledButton(ctk.CTkButton):
+    """Button with predefined styles."""
+    
+    def __init__(self, *args, button_type="primary", **kwargs):
+        style = AppStyles.get_button_style(button_type)
+        # Merge the style dict with kwargs
+        for key, value in style.items():
+            if key not in kwargs:
+                kwargs[key] = value
+        
+        super().__init__(*args, **kwargs)

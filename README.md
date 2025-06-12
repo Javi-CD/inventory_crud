@@ -20,7 +20,7 @@ inventory_crud/
 ├── requirements.txt # Project dependencies
 ├── doc/             # Documentation folder
 └── src/
-    ├── models/ Models files
+    ├── models/     # Models files
     │   └── products.py # Product model
     │
     ├── core/        # Core business logic
@@ -30,10 +30,13 @@ inventory_crud/
     │   ├── __init__.py
     │   └── inventory.db # SQLite database
     │
-    └── ui/          # User interface
+    └── ui/
+    
+        │     # User interface
+        ├─      
         ├── __init__.py
         ├── app.py       # Main application class
-        └── frame.py     # UI components
+        └── styles.py    
 ```
 
 ## How to Run
@@ -46,6 +49,15 @@ git clone https://github.com/Javi-CD/inventory_crud.git
 # Change to the Work Directory
 cd inventory_crud
 
+# if you don't have poetry installed
+pip install poetry 
+
+# Install dependecies 
+pip install poetry
+
+# Activate the virtual environment
+pip install poetry
+
 # Execute program
 python main,py
 ```
@@ -54,4 +66,4 @@ python main,py
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
->_**This project was developed with 💓 by Javier Pérez**_
+
