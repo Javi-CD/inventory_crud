@@ -1,9 +1,10 @@
 import customtkinter as ctk
 import os
 from typing import Any
+from PIL import Image, ImageTk, ImageDraw
 from src.core.database import DatabaseManager
 from src.models.models import Employee
-from src.ui.components.login import LoginFrame
+from src.ui.components.login.enhanced_login import EnhancedLoginUI
 from src.ui.components.inventory.inventory_frame import InventoryFrame
 from src.ui.styles import AppStyles
 
@@ -30,9 +31,16 @@ class InventoryApp:
         self.app: ctk.CTk = ctk.CTk()
         self.app.title("Inventory System")
 
+        screen_width = self.app.winfo_screenwidth()
+        screen_height = self.app.winfo_screenheight()
+
         # Set window size; adjust or allow resizing if needed
-        self.app.geometry("650x750")
-        self.app.resizable(True, True)
+        self.app.geometry(f"{screen_width}x{screen_height}+0+0")
+
+        # Activate full screen mode
+        # self.app.attributes("-fullscreen", True)
+
+        self.app.resizable(False, False)
 
         # Keep reference to current frame
         self.current_frame: Any = None
@@ -47,7 +55,7 @@ class InventoryApp:
         self._clear_app()
 
         # LoginFrame(master, on_success_callback)
-        self.current_frame = LoginFrame(self.app, self._on_login_success)
+        self.current_frame = EnhancedLoginUI(self.app, self._on_login_success)
 
     def show_inventory(self, employee: Employee) -> None:
         """
