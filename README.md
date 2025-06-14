@@ -46,9 +46,11 @@ inventory_crud/
     │
     └── ui/          # User interface
         ├── components/  # UI building blocks
-        │   └── components.py # Reusable UI components 
-        │   └── inventory.db
-        │   └── loggin.py
+        │   └── inventory/
+        │   └── product/
+        │   └── login.py
+        │   └── components.py # Reusable UI components
+        │   └── stats_panel.py 
         │   └── __init__.py
         │
         ├── __init__.py
