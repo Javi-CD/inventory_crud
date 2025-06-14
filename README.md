@@ -89,6 +89,8 @@ python -m unittest discover tests
 # Run specific test module
 python -m tests.core.database_test
 python -m tests.ui.components_test
+python -m unittest tests.models.models_test
+python -m unittest tests.ui.stats_panel_test
 ```
 
 ## License
