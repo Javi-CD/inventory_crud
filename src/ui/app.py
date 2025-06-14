@@ -4,7 +4,7 @@ from typing import Any
 from src.core.database import DatabaseManager
 from src.models.models import Employee
 from src.ui.components.login import LoginFrame
-from src.ui.components.inventory import InventoryFrame
+from src.ui.components.inventory.inventory_frame import InventoryFrame
 from src.ui.styles import AppStyles
 
 

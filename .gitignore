@@ -1,7 +1,9 @@
 dist/
+build/
 __pycache__/
 */__pycache__/
 
+*.spec
 .venv/
 *.db
 */*.db
