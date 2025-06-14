@@ -73,7 +73,7 @@ pip install poetry
 pip install poetry
 
 # Activate the virtual environment
-pip install poetry
+poetry shell
 
 # Execute program
 python main.py
