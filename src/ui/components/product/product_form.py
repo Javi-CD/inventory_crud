@@ -17,11 +17,15 @@ class ProductManagementTab:
         db_manager: DatabaseManager,
         result_label: MessageLabel,
         refresh_callback: Callable[[], None],
+        switch_to_inventory_tab,
     ) -> None:
         self.parent = parent
         self.db_manager = db_manager
         self.result_label = result_label
         self.refresh_callback = refresh_callback
+
+        # Callback to change to the inventory tab
+        self.switch_to_inventory_tab = switch_to_inventory_tab
 
         self._create_form()
         self._create_action_buttons()
@@ -125,9 +129,13 @@ class ProductManagementTab:
         try:
             self.db_manager.add_product(name, str(price_val))
             self.clear_fields()
+
             # Refresh data
             self.refresh_callback()
+            self.switch_to_inventory_tab()  # Change to inventory tab
+
             self.result_label.show_success(f"Product '{name}' added successfully.")
+
         except Exception as e:
             self.result_label.show_error(f"Error when adding product: {e}")
 
@@ -166,9 +174,11 @@ class ProductManagementTab:
             self.db_manager.update_product(product_id, name, str(price_val))
             self.clear_fields()
             self.refresh_callback()
+            self.switch_to_inventory_tab()
             self.result_label.show_success(
                 f"Product ID {product_id} updated successfully."
             )
+
         except Exception as e:
             self.result_label.show_error(f"Error when updating product: {e}")
 
@@ -193,9 +203,11 @@ class ProductManagementTab:
             self.db_manager.delete_product(product_id)
             self.clear_fields()
             self.refresh_callback()
+            self.switch_to_inventory_tab()
             self.result_label.show_success(
                 f"Product ID {product_id} deleted successfully."
             )
+
         except Exception as e:
             self.result_label.show_error(f"Error when deleting product: {e}")
 

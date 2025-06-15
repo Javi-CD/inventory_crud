@@ -97,14 +97,13 @@ class InventoryFrame(ctk.CTkFrame):
 
         # Add two tabs
         self.tabview.add("Product Management")
-        self.tabview.add("Inventory")
-
-        # Create product management tab
+        self.tabview.add("Inventory")  # Create product management tab
         self.product_tab = ProductManagementTab(
             self.tabview.tab("Product Management"),
             self.db_manager,
             self.result_label,
             self.refresh_data,
+            self.switch_to_inventory_tab,  # Pass callback to switch to inventory tab
         )
 
         # Create inventory tab
@@ -119,3 +118,7 @@ class InventoryFrame(ctk.CTkFrame):
         """Refresh all data in both tabs"""
         self.inventory_tab.read_products()
         self.inventory_tab.update_summary_data()
+
+    def switch_to_inventory_tab(self) -> None:
+        """Change to the Inventory tab after product operations"""
+        self.tabview.set("Inventory")  # Switch to the Inventory tab
