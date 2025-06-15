@@ -4,7 +4,6 @@ A simple inventory management system built with Python and CustomTkinter.
 
 ![image](https://github.com/user-attachments/assets/1805c98f-6341-4fa8-a4c5-cf35b7e1ee56)
 
-
 ## Features ⭐
 
 - Add new products with name and price
@@ -95,6 +94,8 @@ python -m tests.ui.components_test
 python -m unittest tests.models.models_test
 python -m unittest tests.ui.stats_panel_test
 ```
+## DOC 📖
+<a href=https://github.com/Javi-CD/inventory_crud/tree/develop/doc >Documentation</a>
 
 ## License ©️
 This project is licensed under the MIT License - see the LICENSE file for details.
