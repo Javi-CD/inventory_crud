@@ -1,8 +1,11 @@
-# Inventory Management System
+# ✨ Inventory Management System ✨
 
-A simple inventory management system built with Python and Tkinter.
+A simple inventory management system built with Python and CustomTkinter.
 
-## Features
+![image](https://github.com/user-attachments/assets/1805c98f-6341-4fa8-a4c5-cf35b7e1ee56)
+
+
+## Features ⭐
 
 - Add new products with name and price
 - View all products in a sortable list
@@ -10,7 +13,7 @@ A simple inventory management system built with Python and Tkinter.
 - Delete products from inventory
 - Data storage using SQLite database
 
-## Project Structure
+## Project Structure 📂
 
 ```yaml
 inventory_crud/
@@ -58,7 +61,7 @@ inventory_crud/
         └── styles.py    # UI styling definitions  
 ```
 
-## How to Run
+## How to Run 🚀
 
 ```bash
 
@@ -80,7 +83,7 @@ poetry shell
 # Execute program
 python main.py
 ```
-## Running Tests
+## Running Tests 📋
 
 ```python
 # Run all tests
@@ -93,7 +96,7 @@ python -m unittest tests.models.models_test
 python -m unittest tests.ui.stats_panel_test
 ```
 
-## License
+## License ©️
 This project is licensed under the MIT License - see the LICENSE file for details.
 
 
