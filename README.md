@@ -74,7 +74,7 @@ cd inventory_crud
 pip install poetry 
 
 # Install dependecies 
-pip install poetry
+poetry install
 
 # Activate the virtual environment
 poetry shell

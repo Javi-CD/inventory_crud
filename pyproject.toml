@@ -1,15 +1,15 @@
 [tool.poetry]
 name = "inventory_crud"
-version = "0.1.0"
-description = "A simple inventory management system built with Python and Tkinter."
+version = "0.1.1"
+description = "A simple inventory management system built with Python and CustomTkinter."
 authors = ["Javier Pérez <javierperezviloria07@gmail.com>"]
 license = "MIT"
 
 [tool.poetry.dependencies]
 python = "^3.13.2"
 customtkinter = "^5.2.2"
-pillow = "^11.2.1
-
+pillow = "^11.2.1"
 [build-system]
+
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
