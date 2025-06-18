@@ -60,7 +60,7 @@ inventory_crud/
         └── styles.py    # UI styling definitions  
 ```
 
-## How to Run 🚀
+## How to Run 
 
 ```bash
 
@@ -76,12 +76,25 @@ pip install poetry
 # Install dependecies 
 poetry install
 
-# Activate the virtual environment
+# Activate the virtual environment (optional)
 poetry shell
 
 # Execute program
 python main.py
 ```
+## Building Executable ⚙️
+
+To create a standalone executable version of the application:
+````bash
+# Make sure PyInstaller is installed
+pip install pyinstaller
+
+# Run the build script or double click in the file
+.\scripts\build_app.bat
+````
+>[!WARNING]
+The executable will be generated in the ``build`` directory as ``InventoryManager.exe``. This standalone version can be distributed to users who don't have Python installed.
+
 ## Running Tests 📋
 
 ```python
@@ -95,10 +108,7 @@ python -m unittest tests.models.models_test
 python -m unittest tests.ui.stats_panel_test
 ```
 ## DOC 📖
-<a href=https://github.com/Javi-CD/inventory_crud/tree/develop/doc >Documentation</a>
+⇨ <a href=https://github.com/Javi-CD/inventory_crud/tree/develop/doc >Documentation</a>
 
 ## License ©️
-This project is licensed under the MIT License - see the LICENSE file for details.
-
-
-
+This project is licensed under the ``MIT License`` - see the LICENSE file for details.
