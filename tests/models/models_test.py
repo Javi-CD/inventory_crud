@@ -1,5 +1,5 @@
 import unittest
-from src.models.models import Product, Employee
+from src.models import Product, Employee
 
 
 class TestProductModel(unittest.TestCase):

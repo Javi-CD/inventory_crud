@@ -3,7 +3,7 @@ import os
 from typing import Any
 from PIL import Image, ImageTk, ImageDraw
 from src.core.database import DatabaseManager
-from src.models.models import Employee
+from src.models import Employee
 from src.ui.components.login.enhanced_login import EnhancedLoginUI
 from src.ui.components.inventory.inventory_frame import InventoryFrame
 from src.ui.styles import AppStyles

@@ -2,7 +2,7 @@ import customtkinter as ctk
 from typing import Any, Callable
 
 from src.core.database import DatabaseManager
-from src.models.models import Employee
+from src.models import Employee
 from .. import MessageLabel, StyledButton
 from src.ui.styles import AppStyles
 from ..product.product_form import ProductManagementTab

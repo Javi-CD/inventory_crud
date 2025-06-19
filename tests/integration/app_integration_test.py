@@ -1,7 +1,7 @@
 import unittest
 import tempfile
 import os
-from src.models.models import Employee
+from src.models import Employee
 from src.core.database import DatabaseManager
 from src.ui.app import InventoryApp
 

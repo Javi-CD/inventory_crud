@@ -2,7 +2,7 @@ import customtkinter as ctk
 from typing import Callable, Optional, Any
 import os
 from PIL import Image
-from src.models.models import Employee
+from src.models import Employee
 from src.ui.styles import AppStyles
 
 
