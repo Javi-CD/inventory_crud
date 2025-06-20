@@ -1,6 +1,6 @@
 # ✨ Inventory Management System ✨
 
-A simple inventory management system built with Python and CustomTkinter.
+A inventory management system built with Python and CustomTkinter.
 
 ![image](https://github.com/user-attachments/assets/1805c98f-6341-4fa8-a4c5-cf35b7e1ee56)
 
@@ -89,10 +89,13 @@ To create a standalone executable version of the application:
 # Make sure PyInstaller is installed
 pip install pyinstaller
 
+# Change to the directory that stores the binaries
+cd build
+
 # Run the build script or double click in the file
 .\scripts\build_app.bat
 ````
->[!WARNING]
+>[!NOTE]
 The executable will be generated in the ``build`` directory as ``InventoryManager.exe``. This standalone version can be distributed to users who don't have Python installed.
 
 ## Running Tests 📋
@@ -111,4 +114,4 @@ python -m unittest tests.ui.stats_panel_test
 ⇨ <a href=https://github.com/Javi-CD/inventory_crud/tree/develop/doc >Documentation</a>
 
 ## License ©️
-This project is licensed under the ``MIT License`` - see the LICENSE file for details.
+This project is licensed under the ``MIT License`` - see the **LICENSE** file for details.
