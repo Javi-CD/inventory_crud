@@ -5,15 +5,14 @@ from PIL import Image
 from src.models import Employee
 from src.ui.styles import AppStyles
 from src.utils.placeholder_illustration import create_placeholder_illustration
+from src.utils.password_utils import toggle_password_visibility
 
 
 class EnhancedLoginUI(ctk.CTkFrame):
-    """
-    Enhanced login UI with a modern design featuring:
-    - Two-panel layout with illustration on the left
-    - Clean login form with username and password fields
-    - Sign-in button, forgot password and sign-up options
-    - Visual styling matching the dark theme with blue accents
+    """Enhanced login UI with a modern design.
+
+    Args:
+        ctk (module): The customtkinter module.
     """
 
     def __init__(self, master: Any, on_login_success: Callable[[Employee], None]):
@@ -79,7 +78,12 @@ class EnhancedLoginUI(ctk.CTkFrame):
             create_placeholder_illustration(panel)
 
     def _add_login_form(self, panel: ctk.CTkFrame):
-        """Add the login form to the right panel."""
+        """Add the login form to the right panel.
+
+        Args:
+            panel (ctk.CTkFrame): The right panel frame
+        """
+
         # Welcome text
         welcome_label = ctk.CTkLabel(
             panel, text="WELCOME", font=("Roboto", 28, "bold"), text_color="white"
@@ -201,6 +205,7 @@ class EnhancedLoginUI(ctk.CTkFrame):
 
     def _handle_login(self):
         """Handle login button click."""
+
         emp_id = self.username_entry.get().strip()
         emp_name = "Administrator" if emp_id == "admin" else emp_id
         emp_role = "Admin" if emp_id == "admin" else "User"
@@ -216,12 +221,10 @@ class EnhancedLoginUI(ctk.CTkFrame):
         self.on_login_success(employee)
 
     def _toggle_password_visibility(self):
-        """Toggle password visibility."""
-        self.show_password = not self.show_password
-        if self.show_password:
-            self.password_entry.configure(show="")
-        else:
-            self.password_entry.configure(show="•")
+        """Toggle password visibility using utility function."""
+        self.show_password = toggle_password_visibility(
+            self.password_entry, self.show_password
+        )
 
     def _forgot_password(self):
         """Handle forgot password click."""
