@@ -4,13 +4,11 @@ from typing import Any, Dict, List, Tuple
 from src.core.database import DatabaseManager
 from .. import MessageLabel, StyledButton
 from src.ui.styles import AppStyles
-from ..stats_panel import StatisticsPanel
+from ..stats_panel.stats_panel import StatisticsPanel
 
 
 class InventoryTab:
-    """
-    Tab for viewing inventory products in a table and showing statistics.
-    """
+    """Tab for viewing inventory products in a table and showing statistics."""
 
     def __init__(
         self, parent: Any, db_manager: DatabaseManager, result_label: MessageLabel
@@ -27,6 +25,7 @@ class InventoryTab:
 
     def _create_table(self) -> None:
         """Create the product table view"""
+
         # Container Frame for the table
         table_container = ctk.CTkFrame(self.parent)
         table_container.pack(padx=10, pady=10, fill="both", expand=True)
@@ -37,12 +36,14 @@ class InventoryTab:
         self.table_scrollable.pack(fill="both", expand=True)
 
         try:
+
             # Configure scrollable frame for table expansion
             inner = getattr(self.table_scrollable, "scrollable_frame", None)
             if inner:
                 inner.columnconfigure(0, weight=1)
             else:
                 self.table_scrollable.columnconfigure(0, weight=1)
+
         except Exception:
             pass
 
@@ -50,12 +51,12 @@ class InventoryTab:
         self._create_table_header()
 
     def _create_table_header(self) -> None:
-        """
-        Create the header row in the scrollable table, with styled labels.
-        """
+        """Create the header row in the scrollable table, with styled labels."""
+
         # Clear any existing header widgets first
         for widget in self.table_scrollable.winfo_children():
             info = widget.grid_info()
+
             if info.get("row") == 0:
                 widget.destroy()
 
@@ -70,10 +71,12 @@ class InventoryTab:
         # We configure column 0 of the scrollable for the header to stretch:
         try:
             inner = getattr(self.table_scrollable, "scrollable_frame", None)
+
             if inner:
                 inner.columnconfigure(0, weight=1)
             else:
                 self.table_scrollable.columnconfigure(0, weight=1)
+
         except Exception:
             pass
 
@@ -106,6 +109,7 @@ class InventoryTab:
 
     def _create_refresh_button(self) -> None:
         """Create refresh button at bottom of inventory tab"""
+
         button_frame = ctk.CTkFrame(self.parent, fg_color="transparent")
         button_frame.pack(fill="x", pady=(5, 10))
 
@@ -119,9 +123,8 @@ class InventoryTab:
         refresh_btn.pack(side="right", padx=15)
 
     def read_products(self) -> None:
-        """
-        Read all products from the database and populate the table.
-        """
+        """Read all products from the database and populate the table."""
+
         try:
             products: List[Tuple[Any, ...]] = self.db_manager.get_all_products()
 
@@ -181,7 +184,6 @@ class InventoryTab:
             self.result_label.show_error(f"Error loading products: {e}")
 
     def update_summary_data(self) -> None:
-        """
-        Update the statistics panel with current data.
-        """
+        """Update the statistics panel with current data."""
+
         self.stats_panel.update_stats()
