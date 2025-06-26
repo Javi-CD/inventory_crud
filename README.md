@@ -14,11 +14,16 @@
   <img src="https://img.shields.io/badge/POETRY-181C24?style=for-the-badge&logo=python&logoColor=white"/>
   <img src="https://img.shields.io/badge/SPHINX-222222?style=for-the-badge&logo=sphinx&logoColor=white"/>
   <img src="https://img.shields.io/badge/READ%20THE%20DOCS-8CA1AF?style=for-the-badge&logo=readthedocs&logoColor=white"/>
+  <img src="https://img.shields.io/badge/GIT-F05032?style=for-the-badge&logo=git&logoColor=white"/>
 </p>
+
+<div align="center">
+    <img src="https://img.shields.io/github/license/Javi-CD/inventory_crud?style=for-the-badge"/>
+</div>
 
 ---
 
-## Features ⭐
+## Features
 
 - Add new products with name and price
 - View all products in a sortable list
@@ -29,7 +34,7 @@
 
 ---
 
-## Project Structure 📂
+## Project Structure
 
 ```yaml
 inventory_crud/
@@ -116,7 +121,7 @@ python main.py
 
 ---
 
-## Building Executable ⚙️
+## Building Executable
 
 To create a standalone executable version of the application:
 ````bash
@@ -137,7 +142,7 @@ The executable will be generated in the ``build`` directory as ``InventoryManage
 
 ---
 
-## Running Tests 📋
+## Running Tests
 
 ```python
 # Run all tests
@@ -150,7 +155,7 @@ python -m tests.ui.components_test
 ```
 ---
 
-## DOC 📖
+## DOC
 → [Documentation](https://inventory-crud.readthedocs.io/en/latest/)
 
 ### Generating Documentation 
@@ -179,7 +184,7 @@ cd .\scripts
 
 ---
 
-## License ©️
+## License
 This project is licensed under the ``MIT License`` - see the [LICENCE](./LICENCE) file for details.
 
 ---
