@@ -58,9 +58,10 @@ class InventoryApp:
         self.current_frame = EnhancedLoginUI(self.app, self._on_login_success)
 
     def show_inventory(self, employee: Employee) -> None:
-        """
-        Clear current widgets and display the inventory management frame.\n
-        param employee: Employee object after successful login
+        """Show the inventory management frame.
+
+        Args:
+            employee (Employee): The employee object after successful login.
         """
         self._clear_app()
 
@@ -78,9 +79,10 @@ class InventoryApp:
             widget.destroy()
 
     def _on_login_success(self, employee: Employee) -> None:
-        """
-        Callback invoked by LoginFrame when login succeeds.
-        :param employee: Employee instance returned by login logic
+        """Handle successful login.
+
+        Args:
+            employee (Employee): The employee object after successful login.
         """
         self.show_inventory(employee)
 

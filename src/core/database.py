@@ -5,7 +5,14 @@ import os
 
 
 def get_resource_path(relative_path):
-    """Get absolute path to resource, works for dev and for PyInstaller"""
+    """Get absolute path to resource, works for dev and for PyInstaller
+
+    Args:
+        relative_path (str): The relative path to the resource.
+
+    Returns:
+        str: The absolute path to the resource.
+    """
     try:
         # PyInstaller creates a temp folder and stores path in _MEIPASS
         base_path = sys._MEIPASS
@@ -63,9 +70,10 @@ class DatabaseManager:
             return result
 
     def get_all_products(self) -> List[Tuple[Any, ...]]:
-        """
-        Retrieve all products ordered by name descending.
-        :return: list of tuples (id, name, price)
+        """Retrieve all products ordered by name descending.
+
+        Returns:
+            List[Tuple[Any, ...]]: A list of tuples representing the products.
         """
         query = "SELECT * FROM products ORDER BY name DESC"
         cursor = self.execute_query(query)
@@ -88,6 +96,7 @@ class DatabaseManager:
             product_id (int): The ID of the product to delete.
         """
         query = "DELETE FROM products WHERE id = ?"
+
         self.execute_query(query, (product_id,))
 
     def update_product(self, product_id: int, new_name: str, new_price: str) -> None:
@@ -99,6 +108,7 @@ class DatabaseManager:
             new_price (str): The new price for the product.
         """
         query = "UPDATE products SET name = ?, price = ? WHERE id = ?"
+
         self.execute_query(query, (new_name, new_price, product_id))
 
     def get_product_by_id(self, product_id: int) -> Optional[Tuple[Any, ...]]:
@@ -112,19 +122,14 @@ class DatabaseManager:
         """
         query = "SELECT * FROM products WHERE id = ?"
         cursor = self.execute_query(query, (product_id,))
+
         return cursor.fetchone()
 
     def get_product_stats(self) -> Dict[str, Any]:
-        """
-        Compute and return statistics over products:
-        - total_products: int
-        - max_price_product: tuple (id, name, max_price)
-        - min_price_product: tuple (id, name, min_price)
-        - avg_price: float
-        - total_value: float (sum of prices; adjust if quantity field is added later)
-        - categories: list of tuples (category_name, count)
-          Here 'category' is derived as the first word of product name.
-        :return: dict with statistics
+        """Compute and return statistics over products.
+
+        Returns:
+            Dict[str, Any]: A dictionary containing product statistics.
         """
         stats: Dict[str, Any] = {}
 
