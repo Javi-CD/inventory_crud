@@ -11,6 +11,7 @@ A inventory management system built with Python and CustomTkinter.
 - Update existing product information
 - Delete products from inventory
 - Data storage using SQLite database
+- Automatic code documentation
 
 ## Project Structure 📂
 
@@ -111,7 +112,7 @@ python -m unittest tests.models.models_test
 python -m unittest tests.ui.stats_panel_test
 ```
 ## DOC 📖
-⇨ <a href=https://github.com/Javi-CD/inventory_crud/tree/develop/doc >Documentation</a>
+⇨ [Documentation in Read the Docs](https://inventory-crud.readthedocs.io/en/latest/)
 
 ## License ©️
-This project is licensed under the ``MIT License`` - see the **LICENSE** file for details.
+This project is licensed under the ``MIT License`` - see the [LICENCE](./LICENCE) file for details.
