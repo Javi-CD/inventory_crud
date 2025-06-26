@@ -1,3 +1,6 @@
 customtkinter==5.2.2
 pillow==11.2.1
 pyinstaller==6.5.0
+Sphinx==8.2.3
+sphinx-autobuild==2024.10.3
+sphinx-rtd-theme==3.0.2
