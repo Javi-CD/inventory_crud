@@ -1,8 +1,20 @@
-# ✨ Inventory Management System ✨
+<div align="center" style="background:rgb(250, 250, 250); border-radius: 10px; padding: 18px 10px 18px 10px; margin-bottom: 18px; box-shadow: 0 1px 6px #e5e7eb;">
+  <h1 style="color:#22223b; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">Modern Inventory Management System</h1>
+  <p style="font-size: 1.04em; color: #444; max-width: 600px; margin: 0 auto;">
+    A robust, user-friendly inventory management application built with <b>Python</b>, <b>CustomTkinter</b> for a clean UI, <b>SQLite</b> for reliable data storage, and <b>Sphinx</b> for automatic code documentation.<br>
+    <span style="color:#6c757d;"><i>Manage your products efficiently, with style and simplicity.</i></span>
+  </p>
+</div>
 
-A inventory management system built with Python and CustomTkinter.
-
-![image](https://github.com/user-attachments/assets/1805c98f-6341-4fa8-a4c5-cf35b7e1ee56)
+<!-- ![image](https://github.com/user-attachments/assets/1805c98f-6341-4fa8-a4c5-cf35b7e1ee56) -->
+<p>
+  <img src="https://img.shields.io/badge/PYTHON-3776AB?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/CUSTOMTKINTER-1a1a1a?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SQLITE-003B57?style=for-the-badge&logo=sqlite&logoColor=white"/>
+  <img src="https://img.shields.io/badge/POETRY-181C24?style=for-the-badge&logo=python&logoColor=white"/>
+  <img src="https://img.shields.io/badge/SPHINX-222222?style=for-the-badge&logo=sphinx&logoColor=white"/>
+  <img src="https://img.shields.io/badge/READ%20THE%20DOCS-8CA1AF?style=for-the-badge&logo=readthedocs&logoColor=white"/>
+</p>
 
 ---
 
@@ -169,3 +181,11 @@ cd .\scripts
 
 ## License ©️
 This project is licensed under the ``MIT License`` - see the [LICENCE](./LICENCE) file for details.
+
+---
+
+<p align="center" style="margin-top: 30px;">
+  <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by%20Javi--CD-ff69b4?style=for-the-badge"/>
+  <br/>
+  <span style="color:#888;font-size:14px;">© 2025 Javi-CD &middot; Inventory Management System &middot; MIT License</span>
+</p>
