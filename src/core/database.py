@@ -58,7 +58,8 @@ class DatabaseManager:
 
         Args:
             query (str): SQL query string, possibly with placeholders.
-            parameters (Tuple[Any, ...], optional): Values to bind to the query placeholders. Defaults to ().
+            parameters (Tuple[Any, ...], optional): Values to bind to the query
+                placeholders. Defaults to ().
 
         Returns:
             sqlite3.Cursor: Cursor object after execution.

@@ -13,7 +13,8 @@ from src.ui.styles import AppStyles
 class InventoryApp:
     """
     Main controller for the Inventory application.
-    Manages the initial login screen and, upon success, shows the inventory management UI.
+    Manages the initial login screen and, upon success, shows the inventory
+    management UI.
     """
 
     def __init__(self) -> None:
@@ -23,7 +24,8 @@ class InventoryApp:
         # Apply global styles
         AppStyles.setup()
 
-        # Initialize database manager with a relative path. Adjust if your structure differs.
+        # Initialize database manager with a relative path.
+        # Adjust if your structure differs.
         self.db_path: str = os.path.join("src", "db", "inventory.db")
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self.db_manager: DatabaseManager = DatabaseManager(self.db_path)

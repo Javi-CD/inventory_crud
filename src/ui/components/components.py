@@ -54,7 +54,8 @@ class FormField:
         Args:
             parent (ctk.CTkFrame): The parent frame for the form field.
             label_text (str): The text to display as the field label.
-            placeholder (str, optional): The placeholder text for the entry field. Defaults to "".
+            placeholder (str, optional): The placeholder text for the entry
+                field. Defaults to "".
 
         Returns:
             ctk.CTkEntry: The created entry field.
@@ -82,7 +83,8 @@ class StyledButton(ctk.CTkButton):
         """Initialize the styled button.
 
         Args:
-            button_type (str, optional): The type of button to create. Defaults to "primary".
+            button_type (str, optional): The type of button to create.
+                Defaults to "primary".
         """
         style = AppStyles.get_button_style(button_type)
 
