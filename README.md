@@ -184,6 +184,19 @@ cd .\scripts
 
 ---
 
+## CI/CD Integration
+
+This project uses GitHub Actions for Continuous Integration (CI) and Continuous Delivery (CD). Every time you push code or open a pull request, the following checks are run automatically:
+
+- Code formatting with black
+- Import sorting with isort
+- Linting with flake8
+- Automated tests (pytest or unittest)
+
+You can view the status of these checks in the GitHub Actions tab of the repository. This ensures code quality and helps prevent errors before merging changes.
+
+---
+
 ## License
 This project is licensed under the ``MIT License`` - see the [LICENCE](./LICENCE) file for details.
 
