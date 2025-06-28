@@ -1,10 +1,14 @@
 import unittest
-
 from src.models import Employee, Product
 
 
 class TestProductModel(unittest.TestCase):
-    """Test Product model functionality."""
+    """Test Product model functionality.
+
+    Args:
+        unittest.TestCase: Base test case class from the unittest module
+            used for creating test cases
+    """
 
     def test_product_initialization(self):
         """Test product initialization with default and custom values."""
