@@ -1,8 +1,9 @@
-import unittest
-import tempfile
 import os
-from src.models import Employee
+import tempfile
+import unittest
+
 from src.core.database import DatabaseManager
+from src.models import Employee
 from src.ui.app import InventoryApp
 
 
@@ -65,9 +66,6 @@ class TestInventoryAppIntegration(unittest.TestCase):
         # Patch the database path
         self.old_db_path = InventoryApp.db_path
         InventoryApp.db_path = self.temp_path
-
-        # Create app instance
-        app = InventoryApp()
 
         # Create direct database manager for testing
         db = DatabaseManager(self.temp_path)

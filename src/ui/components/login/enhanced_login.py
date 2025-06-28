@@ -1,11 +1,12 @@
-import customtkinter as ctk
-from typing import Callable, Optional, Any
 import os
+from typing import Any, Callable
+
+import customtkinter as ctk
 from PIL import Image
+
 from src.models import Employee
-from src.ui.styles import AppStyles
-from src.utils.placeholder_illustration import create_placeholder_illustration
 from src.utils.password_utils import toggle_password_visibility
+from src.utils.placeholder_illustration import create_placeholder_illustration
 
 
 class EnhancedLoginUI(ctk.CTkFrame):

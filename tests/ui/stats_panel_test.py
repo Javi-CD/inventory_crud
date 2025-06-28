@@ -1,10 +1,12 @@
-import unittest
-import customtkinter as ctk
-import tempfile
 import os
-from src.ui.components.stats_panel.stats_panel import StatisticsPanel
-from src.ui.components.components import MessageLabel
+import tempfile
+import unittest
+
+import customtkinter as ctk
+
 from src.core.database import DatabaseManager
+from src.ui.components.components import MessageLabel
+from src.ui.components.stats_panel.stats_panel import StatisticsPanel
 from src.ui.styles import AppStyles
 
 

@@ -28,7 +28,8 @@ class AppStyles:
         """Get button styling based on type.
 
         Args:
-            button_type (str, optional): The type of button to style. Defaults to "primary".
+            button_type (str, optional): The type of button to style.
+            Defaults to "primary".
 
         Returns:
             dict: A dictionary containing the button's foreground color and font.

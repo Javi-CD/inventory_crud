@@ -1,7 +1,7 @@
-import sqlite3
-from typing import Any, Dict, List, Optional, Tuple
-import sys
 import os
+import sqlite3
+import sys
+from typing import Any, Dict, List, Optional, Tuple
 
 
 def get_resource_path(relative_path):

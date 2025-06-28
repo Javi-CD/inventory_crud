@@ -126,7 +126,7 @@ python main.py
 To create a standalone executable version of the application:
 ````bash
 # Make sure PyInstaller is installed
-pip install pyinstaller
+poetry add pyinstaller --dev
 
 # Or install PyInstaller with Pip
 pip install pyinstaller

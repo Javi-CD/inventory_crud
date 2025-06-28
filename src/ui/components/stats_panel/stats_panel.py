@@ -1,11 +1,13 @@
-import customtkinter as ctk
 from typing import Any, Dict, List, Tuple
 
+import customtkinter as ctk
+
 from src.core.database import DatabaseManager
-from .. import MessageLabel
-from src.ui.styles import AppStyles
-from .stats_section import StatsSection
 from src.ui.components.stats_panel.categories_section import CategoriesSection
+from src.ui.styles import AppStyles
+
+from .. import MessageLabel
+from .stats_section import StatsSection
 
 
 class StatisticsPanel:
@@ -59,7 +61,10 @@ class StatisticsPanel:
         self.categories_frame = self.categories_section.categories_frame
 
     def update_stats(self) -> None:
-        """Fetch product statistics from the database and update the UI labels and categories list."""
+        """
+        Fetch product statistics from the database and
+        update the UI labels and categories list.
+        """
 
         try:
             stats: Dict[str, Any] = self.db_manager.get_product_stats()

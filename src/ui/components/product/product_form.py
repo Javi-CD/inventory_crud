@@ -1,9 +1,10 @@
-import customtkinter as ctk
 from typing import Any, Callable
 
+import customtkinter as ctk
+
 from src.core.database import DatabaseManager
+
 from .. import MessageLabel, StyledButton
-from src.ui.styles import AppStyles
 
 
 class ProductManagementTab:
