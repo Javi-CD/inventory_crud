@@ -126,7 +126,7 @@ python main.py
 To create a standalone executable version of the application:
 ````bash
 # Make sure PyInstaller is installed
-pip install pyinstaller
+poetry add pyinstaller --dev
 
 # Or install PyInstaller with Pip
 pip install pyinstaller
@@ -181,6 +181,19 @@ cd .\scripts
 
 >[!NOTE]
 >You can view the documentation locally by opening the `index.html` file in your browser located in the `./docs/build/html/index.html` directory or deploying it in your preferred service (e.g., *Read The Doc*).
+
+---
+
+## CI/CD Integration
+
+This project uses GitHub Actions for Continuous Integration (CI) and Continuous Delivery (CD). Every time you push code or open a pull request, the following checks are run automatically:
+
+- Code formatting with black
+- Import sorting with isort
+- Linting with flake8
+- Automated tests (pytest or unittest)
+
+You can view the status of these checks in the GitHub Actions tab of the repository. This ensures code quality and helps prevent errors before merging changes.
 
 ---
 

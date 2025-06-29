@@ -1,5 +1,7 @@
-import customtkinter as ctk
 from typing import Any
+
+import customtkinter as ctk
+
 from src.ui.styles import AppStyles
 
 

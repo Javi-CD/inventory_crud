@@ -1,7 +1,7 @@
-import sqlite3
-from typing import Any, Dict, List, Optional, Tuple
-import sys
 import os
+import sqlite3
+import sys
+from typing import Any, Dict, List, Optional, Tuple
 
 
 def get_resource_path(relative_path):
@@ -58,7 +58,8 @@ class DatabaseManager:
 
         Args:
             query (str): SQL query string, possibly with placeholders.
-            parameters (Tuple[Any, ...], optional): Values to bind to the query placeholders. Defaults to ().
+            parameters (Tuple[Any, ...], optional): Values to bind to the query
+                placeholders. Defaults to ().
 
         Returns:
             sqlite3.Cursor: Cursor object after execution.

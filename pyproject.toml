@@ -4,16 +4,28 @@ version = "0.1.1"
 description = "A simple inventory management system built with Python and CustomTkinter."
 authors = ["Javier Pérez <javierperezviloria07@gmail.com>"]
 license = "MIT"
+package-mode = false
 
 [tool.poetry.dependencies]
 python = "^3.13.2"
 customtkinter = "^5.2.2"
 pillow = "^11.2.1"
-pyinstaller = "^6.5.0"
+pyinstaller = { version = "^6.5.0", python = ">=3.8,<3.13" }
 sphinx = "*"
 sphinx-autobuild = "*"
 sphinx-rtd-theme = "3.0.2"
+black = "25.1.0"
+flake8 = "7.3.0"
+isort = "6.0.1"
+
 
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+[tool.black]
+line-length = 88
+target-version = ["py311"]
+
+[tool.isort]
+profile = "black"

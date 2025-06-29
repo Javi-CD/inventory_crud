@@ -1,10 +1,12 @@
-import customtkinter as ctk
 from typing import Any, Callable
+
+import customtkinter as ctk
 
 from src.core.database import DatabaseManager
 from src.models import Employee
-from .. import MessageLabel, StyledButton
 from src.ui.styles import AppStyles
+
+from .. import MessageLabel, StyledButton
 from ..product.product_form import ProductManagementTab
 from ..product.product_table import InventoryTab
 

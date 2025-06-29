@@ -1,9 +1,11 @@
+from typing import Any, List, Tuple
+
 import customtkinter as ctk
-from typing import Any, Dict, List, Tuple
 
 from src.core.database import DatabaseManager
-from .. import MessageLabel, StyledButton
 from src.ui.styles import AppStyles
+
+from .. import MessageLabel, StyledButton
 from ..stats_panel.stats_panel import StatisticsPanel
 
 

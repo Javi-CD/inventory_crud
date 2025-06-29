@@ -1,10 +1,12 @@
-import unittest
-import customtkinter as ctk
-import tempfile
 import os
-from src.ui.components.product.product_form import ProductManagementTab
-from src.ui.components.components import MessageLabel
+import tempfile
+import unittest
+
+import customtkinter as ctk
+
 from src.core.database import DatabaseManager
+from src.ui.components.components import MessageLabel
+from src.ui.components.product.product_form import ProductManagementTab
 from src.ui.styles import AppStyles
 
 

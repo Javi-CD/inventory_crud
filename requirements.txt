@@ -4,3 +4,6 @@ pyinstaller==6.5.0
 Sphinx==8.2.3
 sphinx-autobuild==2024.10.3
 sphinx-rtd-theme==3.0.2
+black==25.1.0
+flake8==7.3.0
+isort==6.0.1
