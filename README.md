@@ -146,11 +146,11 @@ The executable will be generated in the ``build`` directory as ``InventoryManage
 
 ```python
 # Run all tests
-python -m unittest discover tests
+pytest
 
 # Run specific test module
-python -m tests.core.database_test
-python -m tests.ui.components_test
+pytest ./tests/core/test_database.py
+pytest ./tests/integration/test_app_integration.py
 ...
 ```
 ---

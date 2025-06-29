@@ -17,6 +17,9 @@ class InventoryApp:
     management UI.
     """
 
+    # Define db_path as a class attribute
+    db_path: str = os.path.join("src", "db", "inventory.db")
+
     def __init__(self) -> None:
         """
         Initialize the application: set up styles, database, and show login.
@@ -24,9 +27,7 @@ class InventoryApp:
         # Apply global styles
         AppStyles.setup()
 
-        # Initialize database manager with a relative path.
-        # Adjust if your structure differs.
-        self.db_path: str = os.path.join("src", "db", "inventory.db")
+        # Initialize database manager
         os.makedirs(os.path.dirname(self.db_path), exist_ok=True)
         self.db_manager: DatabaseManager = DatabaseManager(self.db_path)
 
