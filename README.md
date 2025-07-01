@@ -149,8 +149,8 @@ The executable will be generated in the ``build`` directory as ``InventoryManage
 pytest
 
 # Run specific test module
-pytest ./tests/core/test_database.py
-pytest ./tests/integration/test_app_integration.py
+pytest .\tests\core\test_database.py
+pytest .\tests\integration\test_app_integration.py
 ...
 ```
 ---
@@ -203,7 +203,7 @@ This project is licensed under the ``MIT License`` - see the [LICENCE](./LICENCE
 ---
 
 <p align="center" style="margin-top: 30px;">
-  <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by%20Javi--CD-ff69b4?style=for-the-badge"/>
+  <img src="https://img.shields.io/badge/Made%20with%20%E2%9D%A4%EF%B8%8F%20by%20Javi--CD-444444?style=for-the-badge"/>
   <br/>
   <span style="color:#888;font-size:14px;">© 2025 Javi-CD &middot; Inventory Management System &middot; MIT License</span>
 </p>
