@@ -45,7 +45,7 @@ inventory_crud/
 ├── CODE_OF_CONDUCT.md   # Code of Conduct File
 ├── CONTRIBUTING.md      # Explanatory file for contributions
 ├── main.py              # Application entry point
-│     
+│
 ├── assets/              # Assets Files
 ├── docs/                # Documentation folder
 ├── tests/               # Unit Test Directory
@@ -61,11 +61,11 @@ inventory_crud/
     ├── models/          # Models files
     │   ├── employee_model.py
     │   ├── product_model.py
-    │   └── __init__.py  
+    │   └── __init__.py
     │
     ├── core/            # Core business logic
     │   ├── database.py  # Database operations
-    │   └── __init__.py  
+    │   └── __init__.py
     │
     ├── db/              # Database files
     │   ├── __init__.py
@@ -78,12 +78,12 @@ inventory_crud/
     │   │   ├── login/
     │   │   ├── stats_panel/
     │   │   │
-    │   │   ├── components.py 
+    │   │   ├── components.py
     │   │   └── __init__.py
     │   │
     │   ├── __init__.py
     │   ├── app.py       # Main application class
-    │   └── styles.py    # UI styling definitions  
+    │   └── styles.py    # UI styling definitions
     │
     ├── utils/           # Utilities Directory
     │    ├── passwor_utils.py
@@ -96,7 +96,7 @@ inventory_crud/
 
 ---
 
-## How to Run 
+## How to Run
 
 ```bash
 
@@ -107,9 +107,9 @@ git clone https://github.com/Javi-CD/inventory_crud.git
 cd inventory_crud
 
 # if you don't have poetry installed
-pip install poetry 
+pip install poetry
 
-# Install dependecies 
+# Install dependecies
 poetry install
 
 # Activate the virtual environment (optional)
@@ -124,7 +124,8 @@ python main.py
 ## Building Executable
 
 To create a standalone executable version of the application:
-````bash
+
+```bash
 # Make sure PyInstaller is installed
 poetry add pyinstaller --dev
 
@@ -136,9 +137,10 @@ cd .\build
 
 # Run the build script or double click in the file
 .\scripts\build_app.bat
-````
->[!NOTE]
-The executable will be generated in the ``build`` directory as ``InventoryManager.exe``. This standalone version can be distributed to users who don't have Python installed.
+```
+
+> [!NOTE]
+> The executable will be generated in the `build` directory as `InventoryManager.exe`. This standalone version can be distributed to users who don't have Python installed.
 
 ---
 
@@ -153,12 +155,14 @@ pytest .\tests\core\test_database.py
 pytest .\tests\integration\test_app_integration.py
 ...
 ```
+
 ---
 
-## DOC
+## Documentation
+
 → [Documentation](https://inventory-crud.readthedocs.io/en/latest/)
 
-### Generating Documentation 
+### Generating Documentation
 
 To build the HTML documentation locally using Sphinx, you can use the provided batch script `build_docs.bat`
 
@@ -178,9 +182,8 @@ cd .\scripts
 
 ```
 
-
->[!NOTE]
->You can view the documentation locally by opening the `index.html` file in your browser located in the `./docs/build/html/index.html` directory or deploying it in your preferred service (e.g., *Read The Doc*).
+> [!NOTE]
+> You can view the documentation locally by opening the `index.html` file in your browser located in the `.\docs\build\html\index.html` directory or deploying it in your preferred service (e.g., _Read The Doc_).
 
 ---
 
@@ -191,14 +194,14 @@ This project uses GitHub Actions for Continuous Integration (CI) and Continuous 
 - Code formatting with black
 - Import sorting with isort
 - Linting with flake8
-- Automated tests (pytest or unittest)
 
 You can view the status of these checks in the GitHub Actions tab of the repository. This ensures code quality and helps prevent errors before merging changes.
 
 ---
 
 ## License
-This project is licensed under the ``MIT License`` - see the [LICENCE](./LICENCE) file for details.
+
+This project is licensed under the `MIT License` - see the [LICENCE](./LICENCE) file for details.
 
 ---
 
