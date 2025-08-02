@@ -1,5 +1,5 @@
 <div align="center" style="background:rgb(250, 250, 250); border-radius: 10px; padding: 18px 10px 18px 10px; margin-bottom: 18px; box-shadow: 0 1px 6px #e5e7eb;">
-  <h1 style="color:#22223b; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">Modern Inventory Management System</h1>
+  <h1 style="color:#22223b; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">Inventory Management System</h1>
   <p style="font-size: 1.04em; color: #444; max-width: 600px; margin: 0 auto;">
     A robust, user-friendly inventory management application built with <b>Python</b>, <b>CustomTkinter</b> for a clean UI, <b>SQLite</b> for reliable data storage, and <b>Sphinx</b> for automatic code documentation.<br>
     <span style="color:#6c757d;"><i>Manage your products efficiently, with style and simplicity.</i></span>
