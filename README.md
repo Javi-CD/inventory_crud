@@ -1,8 +1,8 @@
-<div align="center" style="background:rgb(250, 250, 250); border-radius: 10px; padding: 18px 10px 18px 10px; margin-bottom: 18px; box-shadow: 0 1px 6px #e5e7eb;">
-  <h1 style="color:#22223b; margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">Inventory Management System</h1>
-  <p style="font-size: 1.04em; color: #444; max-width: 600px; margin: 0 auto;">
+<div align="center" style=" padding: 18px 10px 18px 10px; margin-bottom: 18px;">
+  <h1 style=" margin-bottom: 8px; font-weight: 700; letter-spacing: 0.5px;">Inventory Management System</h1>
+  <p style="font-size: 1.04em; max-width: 600px; margin: 0 auto;">
     A robust, user-friendly inventory management application built with <b>Python</b>, <b>CustomTkinter</b> for a clean UI, <b>SQLite</b> for reliable data storage, and <b>Sphinx</b> for automatic code documentation.<br>
-    <span style="color:#6c757d;"><i>Manage your products efficiently, with style and simplicity.</i></span>
+    <span><i>Manage your products efficiently, with style and simplicity.</i></span>
   </p>
 </div>
 
@@ -171,7 +171,9 @@ poetry run pytest .\tests\integration\test_app_integration.py
 
 <details>
 
-  <summary>Click to open</summary>
+<summary>Click to open</summary>
+
+<br/>
 
 To build the HTML documentation locally using Sphinx, you can use the provided batch script `build_docs.bat`
 
@@ -191,7 +193,6 @@ cd .\scripts
 
 ```
 
-> [!NOTE]
 > You can view the documentation locally by opening the `index.html` file in your browser located in the `.\docs\build\html\index.html` directory or deploying it in your preferred service (e.g., _Read The Doc_).
 
 </details>
