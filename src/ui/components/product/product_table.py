@@ -148,64 +148,72 @@ class InventoryTab:
 
     def read_products(self) -> None:
         """Read all products from the database and populate the table."""
-
         try:
             products: List[Tuple[Any, ...]] = self.db_manager.get_all_products()
-
-            # Remove previous rows: widgets with grid row> = 1
-            for widget in self.table_scrollable.winfo_children():
-                info = widget.grid_info()
-                row = info.get("row")
-
-                if isinstance(row, int) and row >= 1:
-                    widget.destroy()
-
-            # Populate new rows
-            for idx, p in enumerate(products, start=1):
-                prod_id = p[0]
-                name = p[1]
-
-                try:
-                    price_val = float(p[2])
-                except Exception:
-                    price_val = 0.0
-
-                price_str = f"${price_val:,.2f}"
-
-                # Alternate background color
-                row_bg = "#2b2b2b" if idx % 2 == 1 else "#242424"
-
-                row_frame = ctk.CTkFrame(
-                    self.table_scrollable, fg_color=row_bg, corner_radius=0
-                )
-
-                row_frame.grid(row=idx, column=0, sticky="ew", padx=2, pady=0)
-
-                # Configure columns: same scheme as header
-                row_frame.columnconfigure(0, weight=1)
-                row_frame.columnconfigure(1, weight=4)
-                row_frame.columnconfigure(2, weight=2)
-
-                # ID label
-                id_lbl = ctk.CTkLabel(
-                    row_frame, text=str(prod_id), font=AppStyles.NORMAL_FONT, anchor="w"
-                )
-                id_lbl.grid(row=0, column=0, sticky="ew", padx=8, pady=6)
-
-                # Name label
-                name_lbl = ctk.CTkLabel(
-                    row_frame, text=name, font=AppStyles.NORMAL_FONT, anchor="w"
-                )
-                name_lbl.grid(row=0, column=1, sticky="ew", padx=8, pady=6)
-
-                # Price label, aligned to the right
-                price_lbl = ctk.CTkLabel(
-                    row_frame, text=price_str, font=AppStyles.NORMAL_FONT, anchor="e"
-                )
-                price_lbl.grid(row=0, column=2, sticky="ew", padx=8, pady=6)
-
+            self._clear_existing_rows()
+            self._populate_product_rows(products)
         except Exception as e:
             self.result_label.show_error(f"Error loading products: {e}")
+
+    def _clear_existing_rows(self) -> None:
+        """Remove all existing product rows from the table."""
+        for widget in self.table_scrollable.winfo_children():
+            info = widget.grid_info()
+            row = info.get("row")
+            if isinstance(row, int) and row >= 1:
+                widget.destroy()
+
+    def _populate_product_rows(self, products: List[Tuple[Any, ...]]) -> None:
+        """Populate the table with product data."""
+        for idx, product in enumerate(products, start=1):
+            row_frame = self._create_product_row(product, idx)
+            self._add_product_labels(row_frame, product)
+
+    def _create_product_row(self, product: Tuple[Any, ...], idx: int) -> ctk.CTkFrame:
+        """Create a single product row frame with styling."""
+        row_bg = "#2b2b2b" if idx % 2 == 1 else "#242424"
+        row_frame = ctk.CTkFrame(
+            self.table_scrollable, fg_color=row_bg, corner_radius=0
+        )
+        row_frame.grid(row=idx, column=0, sticky="ew", padx=2, pady=0)
+        
+        # Configure columns: same scheme as header
+        row_frame.columnconfigure(0, weight=1)
+        row_frame.columnconfigure(1, weight=4)
+        row_frame.columnconfigure(2, weight=2)
+        
+        return row_frame
+
+    def _add_product_labels(self, row_frame: ctk.CTkFrame, product: Tuple[Any, ...]) -> None:
+        """Add ID, name, and price labels to a product row."""
+        prod_id, name = product[0], product[1]
+        price_str = self._format_price(product[2])
+        
+        # ID label
+        id_lbl = ctk.CTkLabel(
+            row_frame, text=str(prod_id), font=AppStyles.NORMAL_FONT, anchor="w"
+        )
+        id_lbl.grid(row=0, column=0, sticky="ew", padx=8, pady=6)
+
+        # Name label
+        name_lbl = ctk.CTkLabel(
+            row_frame, text=name, font=AppStyles.NORMAL_FONT, anchor="w"
+        )
+        name_lbl.grid(row=0, column=1, sticky="ew", padx=8, pady=6)
+
+        # Price label, aligned to the right
+        price_lbl = ctk.CTkLabel(
+            row_frame, text=price_str, font=AppStyles.NORMAL_FONT, anchor="e"
+        )
+        price_lbl.grid(row=0, column=2, sticky="ew", padx=8, pady=6)
+
+    def _format_price(self, price_value: Any) -> str:
+        """Format price value as currency string."""
+        try:
+            price_val = float(price_value)
+        except Exception:
+            price_val = 0.0
+        return f"${price_val:,.2f}"
 
     def update_summary_data(self) -> None:
         """Update the statistics panel with current data."""
