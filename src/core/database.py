@@ -133,46 +133,102 @@ class DatabaseManager:
             Dict[str, Any]: A dictionary containing product statistics.
         """
         stats: Dict[str, Any] = {}
-
-        # Total number of products
-        count_query = "SELECT COUNT(*) FROM products"
-        cursor = self.execute_query(count_query)
-        total = cursor.fetchone()[0]
-        stats["total_products"] = total
-
-        if total == 0:
-            # No further stats if empty
+        
+        # Get total count first
+        total_products = self._get_total_products_count()
+        stats["total_products"] = total_products
+        
+        if total_products == 0:
             return stats
-
-        # Most expensive product (id, name, max price)
-        max_query = "SELECT id, name, MAX(price) FROM products"
-        cursor = self.execute_query(max_query)
-        stats["max_price_product"] = cursor.fetchone()
-
+        
+        # Get all other statistics
+        stats.update(self._get_price_statistics())
+        stats["categories"] = self._get_product_categories()
+        
+        return stats
+    
+    def _get_total_products_count(self) -> int:
+        """Get the total number of products in the database.
+        
+        Returns:
+            int: Total number of products.
+        """
+        query = "SELECT COUNT(*) FROM products"
+        cursor = self.execute_query(query)
+        return cursor.fetchone()[0]
+    
+    def _get_price_statistics(self) -> Dict[str, Any]:
+        """Get price-related statistics for products.
+        
+        Returns:
+            Dict[str, Any]: Dictionary containing price statistics.
+        """
+        price_stats = {}
+        
+        # Most expensive product
+        price_stats["max_price_product"] = self._get_most_expensive_product()
+        
         # Least expensive product
-        min_query = "SELECT id, name, MIN(price) FROM products"
-        cursor = self.execute_query(min_query)
-        stats["min_price_product"] = cursor.fetchone()
-
-        # Average price
-        avg_query = "SELECT AVG(price) FROM products"
-        cursor = self.execute_query(avg_query)
-        stats["avg_price"] = cursor.fetchone()[0]
-
-        # Total value (sum of prices)
-        sum_query = "SELECT SUM(price) FROM products"
-        cursor = self.execute_query(sum_query)
-        stats["total_value"] = cursor.fetchone()[0]
-
-        # Categories: first word of name as category, count occurrences
-        categories_query = """
+        price_stats["min_price_product"] = self._get_least_expensive_product()
+        
+        # Average and total price
+        price_stats["avg_price"] = self._get_average_price()
+        price_stats["total_value"] = self._get_total_value()
+        
+        return price_stats
+    
+    def _get_most_expensive_product(self) -> Tuple[Any, ...]:
+        """Get the most expensive product.
+        
+        Returns:
+            Tuple[Any, ...]: Tuple containing (id, name, max_price).
+        """
+        query = "SELECT id, name, MAX(price) FROM products"
+        cursor = self.execute_query(query)
+        return cursor.fetchone()
+    
+    def _get_least_expensive_product(self) -> Tuple[Any, ...]:
+        """Get the least expensive product.
+        
+        Returns:
+            Tuple[Any, ...]: Tuple containing (id, name, min_price).
+        """
+        query = "SELECT id, name, MIN(price) FROM products"
+        cursor = self.execute_query(query)
+        return cursor.fetchone()
+    
+    def _get_average_price(self) -> float:
+        """Get the average price of all products.
+        
+        Returns:
+            float: Average price of products.
+        """
+        query = "SELECT AVG(price) FROM products"
+        cursor = self.execute_query(query)
+        return cursor.fetchone()[0]
+    
+    def _get_total_value(self) -> float:
+        """Get the total value of all products.
+        
+        Returns:
+            float: Sum of all product prices.
+        """
+        query = "SELECT SUM(price) FROM products"
+        cursor = self.execute_query(query)
+        return cursor.fetchone()[0]
+    
+    def _get_product_categories(self) -> List[Tuple[Any, ...]]:
+        """Get product categories based on the first word of product names.
+        
+        Returns:
+            List[Tuple[Any, ...]]: List of tuples containing (category, count).
+        """
+        query = """
             SELECT DISTINCT
                 SUBSTR(name, 1, INSTR(name || " ", " ") - 1) AS category,
                 COUNT(*)
             FROM products
             GROUP BY category
         """
-        cursor = self.execute_query(categories_query)
-        stats["categories"] = cursor.fetchall()
-
-        return stats
+        cursor = self.execute_query(query)
+        return cursor.fetchall()
