@@ -31,10 +31,10 @@ class StatsSection:
 
     def _create_main_frame(self, container: Any) -> ctk.CTkFrame:
         """Create and configure the main statistics frame.
-        
+
         Args:
             container (Any): The parent container for the frame.
-            
+
         Returns:
             ctk.CTkFrame: The configured main frame.
         """
@@ -44,7 +44,7 @@ class StatsSection:
 
     def _add_section_title(self, stats_frame: ctk.CTkFrame) -> None:
         """Add the section title to the statistics frame.
-        
+
         Args:
             stats_frame (ctk.CTkFrame): The frame to add the title to.
         """
@@ -55,10 +55,10 @@ class StatsSection:
 
     def _create_stats_grid(self, stats_frame: ctk.CTkFrame) -> ctk.CTkFrame:
         """Create and configure the grid container for statistics.
-        
+
         Args:
             stats_frame (ctk.CTkFrame): The parent frame for the grid.
-            
+
         Returns:
             ctk.CTkFrame: The configured grid frame.
         """
@@ -68,12 +68,12 @@ class StatsSection:
 
     def _create_label_headers(self, stats_grid: ctk.CTkFrame) -> None:
         """Create the header labels for each statistic.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add labels to.
         """
         labels = self._get_statistic_labels()
-        
+
         for i, label_text in enumerate(labels):
             lbl = ctk.CTkLabel(
                 stats_grid, text=label_text, font=AppStyles.NORMAL_FONT, anchor="w"
@@ -82,7 +82,7 @@ class StatsSection:
 
     def _get_statistic_labels(self) -> list[str]:
         """Get the list of statistic label texts.
-        
+
         Returns:
             list[str]: List of label texts for statistics.
         """
@@ -96,7 +96,7 @@ class StatsSection:
 
     def _create_value_labels(self, stats_grid: ctk.CTkFrame) -> None:
         """Create all value display labels for statistics.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add value labels to.
         """
@@ -108,7 +108,7 @@ class StatsSection:
 
     def _create_total_products_label(self, stats_grid: ctk.CTkFrame) -> None:
         """Create the total products value label.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add the label to.
         """
@@ -119,7 +119,7 @@ class StatsSection:
 
     def _create_total_value_label(self, stats_grid: ctk.CTkFrame) -> None:
         """Create the total value label.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add the label to.
         """
@@ -130,7 +130,7 @@ class StatsSection:
 
     def _create_avg_price_label(self, stats_grid: ctk.CTkFrame) -> None:
         """Create the average price label.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add the label to.
         """
@@ -141,7 +141,7 @@ class StatsSection:
 
     def _create_max_price_label(self, stats_grid: ctk.CTkFrame) -> None:
         """Create the most expensive product label.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add the label to.
         """
@@ -152,7 +152,7 @@ class StatsSection:
 
     def _create_min_price_label(self, stats_grid: ctk.CTkFrame) -> None:
         """Create the least expensive product label.
-        
+
         Args:
             stats_grid (ctk.CTkFrame): The grid frame to add the label to.
         """

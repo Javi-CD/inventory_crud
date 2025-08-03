@@ -133,93 +133,93 @@ class DatabaseManager:
             Dict[str, Any]: A dictionary containing product statistics.
         """
         stats: Dict[str, Any] = {}
-        
+
         # Get total count first
         total_products = self._get_total_products_count()
         stats["total_products"] = total_products
-        
+
         if total_products == 0:
             return stats
-        
+
         # Get all other statistics
         stats.update(self._get_price_statistics())
         stats["categories"] = self._get_product_categories()
-        
+
         return stats
-    
+
     def _get_total_products_count(self) -> int:
         """Get the total number of products in the database.
-        
+
         Returns:
             int: Total number of products.
         """
         query = "SELECT COUNT(*) FROM products"
         cursor = self.execute_query(query)
         return cursor.fetchone()[0]
-    
+
     def _get_price_statistics(self) -> Dict[str, Any]:
         """Get price-related statistics for products.
-        
+
         Returns:
             Dict[str, Any]: Dictionary containing price statistics.
         """
         price_stats = {}
-        
+
         # Most expensive product
         price_stats["max_price_product"] = self._get_most_expensive_product()
-        
+
         # Least expensive product
         price_stats["min_price_product"] = self._get_least_expensive_product()
-        
+
         # Average and total price
         price_stats["avg_price"] = self._get_average_price()
         price_stats["total_value"] = self._get_total_value()
-        
+
         return price_stats
-    
+
     def _get_most_expensive_product(self) -> Tuple[Any, ...]:
         """Get the most expensive product.
-        
+
         Returns:
             Tuple[Any, ...]: Tuple containing (id, name, max_price).
         """
         query = "SELECT id, name, MAX(price) FROM products"
         cursor = self.execute_query(query)
         return cursor.fetchone()
-    
+
     def _get_least_expensive_product(self) -> Tuple[Any, ...]:
         """Get the least expensive product.
-        
+
         Returns:
             Tuple[Any, ...]: Tuple containing (id, name, min_price).
         """
         query = "SELECT id, name, MIN(price) FROM products"
         cursor = self.execute_query(query)
         return cursor.fetchone()
-    
+
     def _get_average_price(self) -> float:
         """Get the average price of all products.
-        
+
         Returns:
             float: Average price of products.
         """
         query = "SELECT AVG(price) FROM products"
         cursor = self.execute_query(query)
         return cursor.fetchone()[0]
-    
+
     def _get_total_value(self) -> float:
         """Get the total value of all products.
-        
+
         Returns:
             float: Sum of all product prices.
         """
         query = "SELECT SUM(price) FROM products"
         cursor = self.execute_query(query)
         return cursor.fetchone()[0]
-    
+
     def _get_product_categories(self) -> List[Tuple[Any, ...]]:
         """Get product categories based on the first word of product names.
-        
+
         Returns:
             List[Tuple[Any, ...]]: List of tuples containing (category, count).
         """

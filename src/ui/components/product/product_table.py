@@ -68,7 +68,7 @@ class InventoryTab:
 
     def _create_header_frame(self) -> ctk.CTkFrame:
         """Create and position the header frame.
-        
+
         Returns:
             ctk.CTkFrame: The configured header frame
         """
@@ -76,10 +76,10 @@ class InventoryTab:
             self.table_scrollable, fg_color=AppStyles.PRIMARY_COLOR, corner_radius=5
         )
         header_frame.grid(row=0, column=0, sticky="ew", padx=2, pady=(2, 0))
-        
+
         # Configure the scrollable frame column to stretch
         self._configure_scrollable_column()
-        
+
         return header_frame
 
     def _configure_scrollable_column(self) -> None:
@@ -95,7 +95,7 @@ class InventoryTab:
 
     def _configure_header_layout(self, header_frame: ctk.CTkFrame) -> None:
         """Configure the column layout within the header frame.
-        
+
         Args:
             header_frame (ctk.CTkFrame): The header frame to configure
         """
@@ -106,7 +106,7 @@ class InventoryTab:
 
     def _add_header_labels(self, header_frame: ctk.CTkFrame) -> None:
         """Add the header labels to the header frame.
-        
+
         Args:
             header_frame (ctk.CTkFrame): The header frame to add labels to
         """
@@ -176,19 +176,21 @@ class InventoryTab:
             self.table_scrollable, fg_color=row_bg, corner_radius=0
         )
         row_frame.grid(row=idx, column=0, sticky="ew", padx=2, pady=0)
-        
+
         # Configure columns: same scheme as header
         row_frame.columnconfigure(0, weight=1)
         row_frame.columnconfigure(1, weight=4)
         row_frame.columnconfigure(2, weight=2)
-        
+
         return row_frame
 
-    def _add_product_labels(self, row_frame: ctk.CTkFrame, product: Tuple[Any, ...]) -> None:
+    def _add_product_labels(
+        self, row_frame: ctk.CTkFrame, product: Tuple[Any, ...]
+    ) -> None:
         """Add ID, name, and price labels to a product row."""
         prod_id, name = product[0], product[1]
         price_str = self._format_price(product[2])
-        
+
         # ID label
         id_lbl = ctk.CTkLabel(
             row_frame, text=str(prod_id), font=AppStyles.NORMAL_FONT, anchor="w"

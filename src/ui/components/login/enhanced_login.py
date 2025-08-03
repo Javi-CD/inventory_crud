@@ -128,7 +128,7 @@ class EnhancedLoginUI(ctk.CTkFrame):
         """
         # Username field
         self._create_username_field(panel)
-        
+
         # Password field
         self._create_password_field(panel)
 

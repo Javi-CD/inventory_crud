@@ -69,15 +69,15 @@ class StatisticsPanel:
             stats: Dict[str, Any] = self.db_manager.get_product_stats()
             total: int = stats.get("total_products", 0)
             self.total_products_label.configure(text=str(total))
-            
+
             if total == 0:
                 self._handle_no_products()
                 return
-            
+
             self._update_statistics_labels(stats)
             self._update_categories_display(stats)
             self.result_label.show_info("Statistics updated.")
-            
+
         except Exception as e:
             self.result_label.show_error(f"Error loading statistics: {e}")
 
@@ -88,7 +88,7 @@ class StatisticsPanel:
         self.avg_price_label.configure(text="N/A")
         self.max_price_label.configure(text="N/A")
         self.min_price_label.configure(text="N/A")
-        
+
         # Clear and show empty categories message
         self._clear_categories()
         self._show_empty_categories_message()
@@ -103,7 +103,7 @@ class StatisticsPanel:
         """Update total value and average price labels."""
         total_value: float = stats.get("total_value", 0.0) or 0.0
         self.total_value_label.configure(text=f"${total_value:,.2f}")
-        
+
         avg_price: float = stats.get("avg_price", 0.0) or 0.0
         self.avg_price_label.configure(text=f"${avg_price:,.2f}")
 
@@ -135,7 +135,7 @@ class StatisticsPanel:
         """Update the categories display section."""
         self._clear_categories()
         categories: List[Tuple[Any, int]] = stats.get("categories", [])
-        
+
         if not categories:
             self._show_empty_categories_message()
         else:
@@ -159,11 +159,13 @@ class StatisticsPanel:
         """Display the list of categories with counts and color indicators."""
         sorted_categories = self._sort_categories(categories)
         colors = self._get_category_colors()
-        
+
         for i, (category, count) in enumerate(sorted_categories):
             self._create_category_item(category, count, colors[i % len(colors)])
 
-    def _sort_categories(self, categories: List[Tuple[Any, int]]) -> List[Tuple[Any, int]]:
+    def _sort_categories(
+        self, categories: List[Tuple[Any, int]]
+    ) -> List[Tuple[Any, int]]:
         """Sort categories by count in descending order."""
         try:
             return sorted(categories, key=lambda x: x[1], reverse=True)
@@ -173,23 +175,25 @@ class StatisticsPanel:
     def _get_category_colors(self) -> List[str]:
         """Get the list of colors for category indicators."""
         return [
-            "#3498db", "#2ecc71", "#e74c3c", "#f39c12",
-            "#9b59b6", "#1abc9c", "#e67e22", "#34495e",
+            "#3498db",
+            "#2ecc71",
+            "#e74c3c",
+            "#f39c12",
+            "#9b59b6",
+            "#1abc9c",
+            "#e67e22",
+            "#34495e",
         ]
 
     def _create_category_item(self, category: str, count: int, color: str) -> None:
         """Create a single category item with color indicator and label."""
-        cat_frame = ctk.CTkFrame(
-            self.categories_frame, fg_color=("gray90", "gray25")
-        )
+        cat_frame = ctk.CTkFrame(self.categories_frame, fg_color=("gray90", "gray25"))
         cat_frame.pack(fill="x", pady=2, padx=2, ipady=2)
-        
+
         # Color indicator
-        color_ind = ctk.CTkFrame(
-            cat_frame, width=8, height=24, fg_color=color
-        )
+        color_ind = ctk.CTkFrame(cat_frame, width=8, height=24, fg_color=color)
         color_ind.pack(side="left", padx=(2, 8))
-        
+
         # Category label
         cat_label = ctk.CTkLabel(
             cat_frame,
