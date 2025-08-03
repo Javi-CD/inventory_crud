@@ -36,6 +36,9 @@
 
 ## Project Structure
 
+<details>
+  <summary>View the project structure</summary>
+
 ```yaml
 inventory_crud/
 ├── proyect.toml         # Proyect dependenies
@@ -93,6 +96,8 @@ inventory_crud/
     └── __init__.py
 
 ```
+
+</details>
 
 ---
 
@@ -164,6 +169,10 @@ poetry run pytest .\tests\integration\test_app_integration.py
 
 ### Generating Documentation
 
+<details>
+
+  <summary>Click to open</summary>
+
 To build the HTML documentation locally using Sphinx, you can use the provided batch script `build_docs.bat`
 
 ```bash
@@ -184,6 +193,8 @@ cd .\scripts
 
 > [!NOTE]
 > You can view the documentation locally by opening the `index.html` file in your browser located in the `.\docs\build\html\index.html` directory or deploying it in your preferred service (e.g., _Read The Doc_).
+
+</details>
 
 ---
 
