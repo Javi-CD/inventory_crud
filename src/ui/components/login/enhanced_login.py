@@ -84,7 +84,18 @@ class EnhancedLoginUI(ctk.CTkFrame):
         Args:
             panel (ctk.CTkFrame): The right panel frame
         """
+        self._add_header_section(panel)
+        self._add_input_fields(panel)
+        self._add_action_buttons(panel)
+        self._add_footer_links(panel)
+        self._add_error_label(panel)
 
+    def _add_header_section(self, panel: ctk.CTkFrame):
+        """Add the header section with welcome text and avatar.
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the header to
+        """
         # Welcome text
         welcome_label = ctk.CTkLabel(
             panel, text="WELCOME", font=("Roboto", 28, "bold"), text_color="white"
@@ -109,7 +120,24 @@ class EnhancedLoginUI(ctk.CTkFrame):
         )
         sign_in_label.place(relx=0.5, rely=0.35, anchor="center")
 
-        # Username
+    def _add_input_fields(self, panel: ctk.CTkFrame):
+        """Add username and password input fields.
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the input fields to
+        """
+        # Username field
+        self._create_username_field(panel)
+        
+        # Password field
+        self._create_password_field(panel)
+
+    def _create_username_field(self, panel: ctk.CTkFrame):
+        """Create the username input field.
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the username field to
+        """
         username_label = ctk.CTkLabel(
             panel, text="Username", font=("Roboto", 12), text_color="gray"
         )
@@ -125,7 +153,12 @@ class EnhancedLoginUI(ctk.CTkFrame):
         )
         self.username_entry.place(relx=0.5, rely=0.5, anchor="center", relwidth=0.8)
 
-        # Password
+    def _create_password_field(self, panel: ctk.CTkFrame):
+        """Create the password input field with visibility toggle.
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the password field to
+        """
         password_label = ctk.CTkLabel(
             panel, text="Password", font=("Roboto", 12), text_color="gray"
         )
@@ -154,6 +187,12 @@ class EnhancedLoginUI(ctk.CTkFrame):
         )
         show_password_icon.place(relx=0.85, rely=0.63, anchor="center")
 
+    def _add_action_buttons(self, panel: ctk.CTkFrame):
+        """Add the main action buttons (login and forgot password).
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the action buttons to
+        """
         # Login button
         self.login_button = ctk.CTkButton(
             panel,
@@ -180,6 +219,12 @@ class EnhancedLoginUI(ctk.CTkFrame):
         )
         self.forgot_password_link.place(relx=0.5, rely=0.8, anchor="center")
 
+    def _add_footer_links(self, panel: ctk.CTkFrame):
+        """Add the footer section with sign up links.
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the footer links to
+        """
         # No account yet? text
         no_account_label = ctk.CTkLabel(
             panel, text="No account yet?", font=("Roboto", 12), text_color="gray"
@@ -198,7 +243,12 @@ class EnhancedLoginUI(ctk.CTkFrame):
         )
         self.sign_up_link.place(relx=0.62, rely=0.88, anchor="center")
 
-        # Error message label
+    def _add_error_label(self, panel: ctk.CTkFrame):
+        """Add the error message label.
+
+        Args:
+            panel (ctk.CTkFrame): The panel to add the error label to
+        """
         self.error_label = ctk.CTkLabel(
             panel, text="", font=("Roboto", 12), text_color="#FF3333"
         )
