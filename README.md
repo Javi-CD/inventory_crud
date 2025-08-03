@@ -19,6 +19,8 @@
 
 <div align="center">
     <img src="https://img.shields.io/github/license/Javi-CD/inventory_crud?style=for-the-badge"/>
+    <img src="https://img.shields.io/github/actions/workflow/status/Javi-CD/inventory_crud/ci.yml?style=for-the-badge""/>
+  <img src="https://img.shields.io/badge/version-0.1.1-blue?style=for-the-badge""/>
 </div>
 
 ---
