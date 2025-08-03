@@ -54,40 +54,62 @@ class InventoryTab:
 
     def _create_table_header(self) -> None:
         """Create the header row in the scrollable table, with styled labels."""
+        self._clear_existing_header()
+        header_frame = self._create_header_frame()
+        self._configure_header_layout(header_frame)
+        self._add_header_labels(header_frame)
 
-        # Clear any existing header widgets first
+    def _clear_existing_header(self) -> None:
+        """Clear any existing header widgets from the table."""
         for widget in self.table_scrollable.winfo_children():
             info = widget.grid_info()
-
             if info.get("row") == 0:
                 widget.destroy()
 
-        # FRAME FOR THE HEADER
+    def _create_header_frame(self) -> ctk.CTkFrame:
+        """Create and position the header frame.
+        
+        Returns:
+            ctk.CTkFrame: The configured header frame
+        """
         header_frame = ctk.CTkFrame(
             self.table_scrollable, fg_color=AppStyles.PRIMARY_COLOR, corner_radius=5
         )
-
-        # We place in Grid Row 0, column 0, Sticky Ew to stretch
         header_frame.grid(row=0, column=0, sticky="ew", padx=2, pady=(2, 0))
+        
+        # Configure the scrollable frame column to stretch
+        self._configure_scrollable_column()
+        
+        return header_frame
 
-        # We configure column 0 of the scrollable for the header to stretch:
+    def _configure_scrollable_column(self) -> None:
+        """Configure the scrollable frame column to allow header stretching."""
         try:
             inner = getattr(self.table_scrollable, "scrollable_frame", None)
-
             if inner:
                 inner.columnconfigure(0, weight=1)
             else:
                 self.table_scrollable.columnconfigure(0, weight=1)
-
         except Exception:
             pass
 
-        # Configure columns inside the header_frame
+    def _configure_header_layout(self, header_frame: ctk.CTkFrame) -> None:
+        """Configure the column layout within the header frame.
+        
+        Args:
+            header_frame (ctk.CTkFrame): The header frame to configure
+        """
         # Small column ID, Name larger, small price
         header_frame.columnconfigure(0, weight=1)
         header_frame.columnconfigure(1, weight=4)
         header_frame.columnconfigure(2, weight=2)
 
+    def _add_header_labels(self, header_frame: ctk.CTkFrame) -> None:
+        """Add the header labels to the header frame.
+        
+        Args:
+            header_frame (ctk.CTkFrame): The header frame to add labels to
+        """
         # ID header
         id_lbl = ctk.CTkLabel(
             header_frame, text="ID", font=AppStyles.NORMAL_FONT, text_color="#ffffff"
