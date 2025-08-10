@@ -213,8 +213,15 @@ You can view the status of these checks in the GitHub Actions tab of the reposit
 
 ---
 
+## Code of Conducts
+Read about the project's codes of conduct in the [CODE_OF_CODUCT.md](./CODE_OF_CONDUCT.md) file.
+
+---
+
 ## Do you want to contribute?
 If you want to contribute to the project, you can read the [CONTRIBUTING.md](./CONTRIBUTING.md) file for more information.
+
+---
 
 ## License
 
