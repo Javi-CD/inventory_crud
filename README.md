@@ -213,6 +213,9 @@ You can view the status of these checks in the GitHub Actions tab of the reposit
 
 ---
 
+## Do you want to contribute?
+If you want to contribute to the project, you can read the [CONTRIBUTING.md](./CONTRIBUTING.md) file for more information.
+
 ## License
 
 This project is licensed under the `MIT License` - see the [LICENCE](./LICENCE) file for details.
